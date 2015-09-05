@@ -1,0 +1,909 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <title>Code coverage report for common-errors/common-error.js</title>
+    <meta charset="utf-8">
+    <link rel="stylesheet" href="../prettify.css">
+    <link rel="stylesheet" href="../base.css">
+    <style type='text/css'>
+        div.coverage-summary .sorter {
+            background-image: url(../sort-arrow-sprite.png);
+        }
+    </style>
+</head>
+<body>
+<div class="header high">
+    <h1>Code coverage report for <span class="entity">common-errors/common-error.js</span></h1>
+    <h2>
+        Statements: <span class="metric">93.94% <small>(62 / 66)</small></span> &nbsp;&nbsp;&nbsp;&nbsp;
+        Branches: <span class="metric">84.62% <small>(22 / 26)</small></span> &nbsp;&nbsp;&nbsp;&nbsp;
+        Functions: <span class="metric">84.62% <small>(11 / 13)</small></span> &nbsp;&nbsp;&nbsp;&nbsp;
+        Lines: <span class="metric">93.94% <small>(62 / 66)</small></span> &nbsp;&nbsp;&nbsp;&nbsp;
+        Ignored: <span class="metric"><span class="ignore-none">none</span></span> &nbsp;&nbsp;&nbsp;&nbsp;
+    </h2>
+    <div class="path"><a href="../index.html">All files</a> &#187; <a href="index.html">common-errors/</a> &#187; common-error.js</div>
+</div>
+<div class="body">
+<pre><table class="coverage">
+<tr><td class="line-count">1
+2
+3
+4
+5
+6
+7
+8
+9
+10
+11
+12
+13
+14
+15
+16
+17
+18
+19
+20
+21
+22
+23
+24
+25
+26
+27
+28
+29
+30
+31
+32
+33
+34
+35
+36
+37
+38
+39
+40
+41
+42
+43
+44
+45
+46
+47
+48
+49
+50
+51
+52
+53
+54
+55
+56
+57
+58
+59
+60
+61
+62
+63
+64
+65
+66
+67
+68
+69
+70
+71
+72
+73
+74
+75
+76
+77
+78
+79
+80
+81
+82
+83
+84
+85
+86
+87
+88
+89
+90
+91
+92
+93
+94
+95
+96
+97
+98
+99
+100
+101
+102
+103
+104
+105
+106
+107
+108
+109
+110
+111
+112
+113
+114
+115
+116
+117
+118
+119
+120
+121
+122
+123
+124
+125
+126
+127
+128
+129
+130
+131
+132
+133
+134
+135
+136
+137
+138
+139
+140
+141
+142
+143
+144
+145
+146
+147
+148
+149
+150
+151
+152
+153
+154
+155
+156
+157
+158
+159
+160
+161
+162
+163
+164
+165
+166
+167
+168
+169
+170
+171
+172
+173
+174
+175
+176
+177
+178
+179
+180
+181
+182
+183
+184
+185
+186
+187
+188
+189
+190
+191
+192
+193
+194
+195
+196
+197
+198
+199
+200
+201
+202
+203
+204
+205
+206
+207
+208
+209
+210
+211
+212
+213
+214
+215
+216
+217
+218
+219
+220
+221
+222
+223
+224
+225
+226
+227
+228
+229
+230
+231
+232
+233
+234
+235
+236
+237
+238
+239
+240
+241
+242
+243
+244
+245
+246
+247
+248
+249
+250
+251
+252
+253
+254
+255
+256
+257
+258
+259
+260
+261
+262
+263
+264
+265
+266
+267
+268
+269
+270
+271
+272
+273
+274
+275
+276
+277
+278
+279
+280
+281
+282
+283
+284
+285
+286
+287
+288
+289</td><td class="line-coverage"><span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1</span>
+<span class="cline-any cline-yes">5</span>
+<span class="cline-any cline-yes">5</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1</span>
+<span class="cline-any cline-yes">3</span>
+<span class="cline-any cline-yes">3</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1</span>
+<span class="cline-any cline-yes">1</span>
+<span class="cline-any cline-yes">1</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1</span>
+<span class="cline-any cline-yes">3</span>
+<span class="cline-any cline-yes">3</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1</span>
+<span class="cline-any cline-yes">1</span>
+<span class="cline-any cline-yes">1</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1</span>
+<span class="cline-any cline-yes">4</span>
+<span class="cline-any cline-yes">4</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1</span>
+<span class="cline-any cline-yes">4</span>
+<span class="cline-any cline-yes">4</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1</span>
+<span class="cline-any cline-yes">2</span>
+<span class="cline-any cline-yes">2</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1</span>
+<span class="cline-any cline-yes">2</span>
+<span class="cline-any cline-yes">2</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1</span>
+<span class="cline-any cline-yes">1</span>
+<span class="cline-any cline-yes">1</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1</span>
+<span class="cline-any cline-yes">1</span>
+<span class="cline-any cline-yes">1</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span></td><td class="text"><pre class="prettyprint lang-js">/**
+ * @fileoverview The common-error module.
+ * A factory to generate common server errors.
+ *
+ * Usage:
+ *   var commonError = require('common-errors/common-error')
+ *
+ *   function (req, res, next){
+ *      next(new commonError.Auth('some custom error message'))
+ *   }
+ *
+ *
+ *
+ * @module common-errors/common-error
+ */
+&nbsp;
+&nbsp;
+&nbsp;
+/**
+ * The common Bad Request Error (400).
+ * @param {string=} opt_message The optional message.
+ * @extends {Error}
+ * @constructor
+ *
+ */
+function BadRequestError(opt_message) {
+  this.name = 'BadRequestError';
+  this.message = (opt_message || 'Bad Request.');
+}
+BadRequestError.prototype = Object.create(Error.prototype);
+&nbsp;
+&nbsp;
+/** @type {!BadRequestError} */
+BadRequestError.prototype.constructor = BadRequestError;
+&nbsp;
+&nbsp;
+&nbsp;
+/**
+ * The common Unauthorized Error (401).
+ * @param {string=} opt_message The optional message.
+ * @extends {Error}
+ * @constructor
+ */
+function AuthError(opt_message) {
+  this.name = 'AuthError';
+  this.message = (opt_message || 'You must login first.');
+}
+AuthError.prototype = Object.create(Error.prototype);
+&nbsp;
+&nbsp;
+/** @type {!AuthError} */
+AuthError.prototype.constructor = AuthError;
+&nbsp;
+&nbsp;
+&nbsp;
+/**
+ * The common Forbidden Error (403).
+ * @param {string=} opt_message The optional message.
+ * @extends {Error}
+ * @constructor
+ */
+function ForbiddenError(opt_message) {
+  this.name = 'ForbiddenError';
+  this.message = (opt_message || 'You do not have the correct permission.');
+}
+ForbiddenError.prototype = Object.create(Error.prototype);
+&nbsp;
+&nbsp;
+/** @type {!ForbiddenError} */
+ForbiddenError.prototype.constructor = ForbiddenError;
+&nbsp;
+&nbsp;
+&nbsp;
+/**
+ * The common Not Found Error (404).
+ * @param {string=} opt_message The optional message.
+ * @extends {Error}
+ * @constructor
+ */
+function NotFoundError(opt_message) {
+  this.name = 'NotFoundError';
+  this.message = (opt_message || 'Required resource is not found.');
+}
+NotFoundError.prototype = Object.create(Error.prototype);
+&nbsp;
+&nbsp;
+/** @type {!NotFoundError} */
+NotFoundError.prototype.constructor = NotFoundError;
+&nbsp;
+&nbsp;
+&nbsp;
+/**
+ * The common Conflict Error (409).
+ * @param {string=} opt_message The optional message.
+ * @extends {Error}
+ * @constructor
+ */
+function ConflictError(opt_message) {
+  this.name = 'ConflictError';
+  this.message = (opt_message || 'There is a conflict on server.');
+}
+ConflictError.prototype = Object.create(Error.prototype);
+&nbsp;
+&nbsp;
+/** @type {!ConflictError} */
+ConflictError.prototype.constructor = ConflictError;
+&nbsp;
+&nbsp;
+&nbsp;
+/**
+ * The Admin Login Error.
+ * @param {string=} opt_message The optional message.
+ * @extends {ForbiddenError}
+ * @constructor
+ */
+<span class="fstat-no" title="function not covered" >function AdminError(opt_message) {</span>
+<span class="cstat-no" title="statement not covered" >  this.name = 'AdminError';</span>
+<span class="cstat-no" title="statement not covered" >  this.message = (opt_message || 'You must be an admin.');</span>
+}
+AdminError.prototype = Object.create(ForbiddenError.prototype);
+&nbsp;
+&nbsp;
+/** @type {!AdminError} */
+AdminError.prototype.constructor = AdminError;
+&nbsp;
+&nbsp;
+&nbsp;
+/**
+ * The User Missing Required Attributes Error.
+ * @param {string=} opt_message The optional message.
+ * @constructor
+ * @extends {BadRequestError}
+ */
+function MissingRequiredAttributesError(opt_message) {
+  this.name = 'MissingRequiredAttributesError';
+  this.message = (opt_message || 'Required Attributes are missing.');
+}
+MissingRequiredAttributesError.prototype = Object.create(
+    BadRequestError.prototype);
+&nbsp;
+&nbsp;
+/** @type {!MissingRequiredAttributesError} */
+MissingRequiredAttributesError.prototype.constructor = (
+    MissingRequiredAttributesError);
+&nbsp;
+&nbsp;
+/**
+ * The User Not Found Error.
+ * @param {string=} opt_message The optional message.
+ * @extends {NotFoundError}
+ * @constructor
+ */
+function UserNotFoundError(opt_message) {
+    this.name = 'UserNotFoundError';
+    this.message = (opt_message || 'User not found.');
+}
+UserNotFoundError.prototype = Object.create(BadRequestError.prototype);
+&nbsp;
+&nbsp;
+/** @type {!UserNotFoundError} */
+UserNotFoundError.prototype.constructor = UserNotFoundError;
+&nbsp;
+&nbsp;
+/**
+ * The User Save Error.
+ * @param {string=} opt_message The optional message.
+ * @constructor
+ * @extends {BadRequestError}
+ */
+function UserSaveError(opt_message) {
+  this.name = 'UserSaveError';
+  this.message = (opt_message || 'Error saving the user.');
+}
+UserSaveError.prototype = Object.create(BadRequestError.prototype);
+&nbsp;
+&nbsp;
+/** @type {!UserSaveError} */
+UserSaveError.prototype.constructor = UserSaveError;
+&nbsp;
+&nbsp;
+&nbsp;
+/**
+ * The User Fetch Error.
+ * @param {string=} opt_message The optional message.
+ * @constructor
+ * @extends {BadRequestError}
+ */
+function UserFetchError(opt_message) {
+  this.name = 'UserFetchError';
+  this.message = (opt_message || 'Error fetching the user.');
+}
+UserFetchError.prototype = Object.create(BadRequestError.prototype);
+&nbsp;
+&nbsp;
+/** @type {!UserFetchError} */
+UserFetchError.prototype.constructor = UserFetchError;
+&nbsp;
+&nbsp;
+/**
+ * The User List Error.
+ * @param {string=} opt_message The optional message.
+ * @constructor
+ * @extends {BadRequestError}
+ */
+function UserListError(opt_message) {
+    this.name = 'UserListError';
+    this.message = (opt_message || 'Error listing the users.');
+}
+UserListError.prototype = Object.create(BadRequestError.prototype);
+&nbsp;
+&nbsp;
+/** @type {!UserListError} */
+UserListError.prototype.constructor = UserListError;
+&nbsp;
+/**
+ * The User Exists Error.
+ * @param {string=} opt_message The optional message.
+ * @constructor
+ * @extends {ConflictError}
+ */
+function UserExistsError(opt_message) {
+  this.name = 'UserExistsError';
+  this.message = (opt_message || 'User already exists.');
+}
+UserExistsError.prototype = Object.create(ConflictError.prototype);
+&nbsp;
+&nbsp;
+/** @type {!UserExistsError} */
+UserExistsError.prototype.constructor = UserExistsError;
+&nbsp;
+&nbsp;
+/**
+ * The Invalid Token Error.
+ * @param {string=} opt_message The optional message.
+ * @constructor
+ * @extends {AuthError}
+ */
+<span class="fstat-no" title="function not covered" >function InvalidTokenError(opt_message) {</span>
+<span class="cstat-no" title="statement not covered" >  this.name = 'InvalidTokenError';</span>
+<span class="cstat-no" title="statement not covered" >  this.message = (opt_message || 'Invalid or Expired Token.');</span>
+}
+&nbsp;
+InvalidTokenError.prototype = Object.create(BadRequestError.prototype);
+&nbsp;
+&nbsp;
+/** @type {!InvalidTokenError} */
+InvalidTokenError.prototype.constructor = InvalidTokenError;
+&nbsp;
+&nbsp;
+/**
+ * Public API
+ * @type {Object}
+ */
+module.exports = {
+  Auth: AuthError,
+  /**
+   * @apiDefine BadRequestError BadRequestError 400
+   * @apiError (BadRequestError) {string} name Error name.
+   * @apiError (BadRequestError) {string} message Error message.
+   */
+  BadRequest: BadRequestError,
+  Forbidden: ForbiddenError,
+  /**
+   * @apiDefine NotFoundError NotFoundError 404
+   * @apiError (NotFoundError) {string} name Error name.
+   * @apiError (NotFoundError) {string} message Error message.
+   */
+  NotFound: NotFoundError,
+  Conflict: ConflictError,
+&nbsp;
+  MissingRequiredAttributes: MissingRequiredAttributesError,
+  UserSave: UserSaveError,
+  UserFetch: UserFetchError,
+  /**
+   * @apiDefine UserNotFoundError UserNotFoundError 404
+   * @apiError (UserNotFoundError) {string} name Error name.
+   * @apiError (UserNotFoundError) {string} message Error message.
+   */
+  UserNotFound: UserNotFoundError,
+  Admin: AdminError,
+  UserExists: UserExistsError,
+  InvalidToken: InvalidTokenError,
+  UserList:UserListError
+&nbsp;
+};
+&nbsp;
+&nbsp;
+&nbsp;
+&nbsp;</pre></td></tr>
+</table></pre>
+
+</div>
+<div class="footer">
+    <div class="meta">Generated by <a href="http://istanbul-js.org/" target="_blank">istanbul</a> at Sat Sep 05 2015 15:02:47 GMT+0530 (IST)</div>
+</div>
+<script src="../prettify.js"></script>
+<script>
+window.onload = function () {
+        if (typeof prettyPrint === 'function') {
+            prettyPrint();
+        }
+};
+</script>
+<script src="../sorter.js"></script>
+</body>
+</html>
