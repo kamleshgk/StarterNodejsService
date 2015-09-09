@@ -3,6 +3,8 @@ API
 
 Nodejs based API server providing REST endpoints to our clients.
 
+Contains functionality to Manager users.  Basic CRUD operations and Login functionality.
+
 Modular architechture ensures maximum code maintainability.
 
 All code is unit tested using Sinon, Mocha.
