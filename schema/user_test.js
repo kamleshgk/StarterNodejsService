@@ -10,6 +10,28 @@ var User = require('./user');
 //var sinon = require('sinon');
 
 
+describe('When trying obfuscate user credentials', function() {
+         
+         var user;
+         before(function() {
+                user = new User();
+                });
+         
+         it('should hash a user\'s password', function() {
+            var hash = user.generateHash('password');
+            assert.notEqual(hash, 'password');
+         });
+         
+         
+         it('should validate a user\'s password', function() {
+                var hash = user.generateHash('password');
+                assert.notEqual(hash, 'password');
+                user.passwordHash = hash;
+                var result = user.validPassword('password');
+                assert.equal(result, true);
+         });
+});
+
 describe('User Object', function() {
 
   var user;
@@ -22,6 +44,7 @@ describe('User Object', function() {
       email: 'test@gmail.com',
       firstName: 'testUser',
       lastName: 'testUserLast',
+      passwordHash: '$2a$08$C.reP7hiv6d1cJAK8ezSmejujZBk7mw64MnJ7pRY4RFgiO9nQVA4q',         
       phone: '919004040595',
       address: 'B-7, Supriya Sankool, Baner, Pune - 411045',
       createdat: 1440507836186,

@@ -73,3 +73,34 @@ module.exports.fetch = function(req, res, next) {
     userController.fetch(req, res, next);
 };
 
+
+/**
+ * Endpoint to login a user
+ * @param {Object} req - request object
+ * @param {Object} res - response object
+ * @param {function()} next - next function
+ */
+module.exports.login = function(req, res, next) {
+    userController.login(req, res, next);
+};
+
+/**
+ * Endpoint to sending forgot password mail.
+ * @param {Object} req - request object
+ * @param {Object} res - response object
+ * @param {function()} next - next function
+ */
+module.exports.forgotPassword = function(req, res, next) {
+    userController.forgotPassword(req, res, next);
+};
+
+/**
+ * Endpoint to for confirming a password reset.
+ * @param {Object} req - request object
+ * @param {Object} res - response object
+ * @param {function()} next - next function
+ */
+module.exports.passwordReset = function(req, res, next) {
+    userController.passwordReset(req, res, next);
+};
+

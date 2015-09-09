@@ -64,6 +64,7 @@ var testUser = {
     email: 'test@gmail.com',
     firstName: 'testUser',
     lastName: 'testUserLast',
+    password:'password',
     phone: '919004040595',
     address: 'B-7, Supriya Sankool, Baner, Pune - 411045',
     createdat: 1440507836186,
@@ -76,6 +77,7 @@ var testUser1 = {
     email: 'test1@gmail.com',
     firstName: 'testUser1',
     lastName: 'testUserLast1',
+    password:'password',
     phone: '919004040577',
     address: 'A-22, Supriya Sankool, Baner, Pune - 411045',
     createdat: 1440507836186,
@@ -120,7 +122,7 @@ describe('User Controller', function() {
           assert(userStub.calledOnce);
           //console.log(next.data);
           //assert.equal(next.data.email, 'test@gmail.com');
-        });
+     });
 
     it(
         'should error if email is missing from the request body',
@@ -128,14 +130,14 @@ describe('User Controller', function() {
           var attributesError = {
             name: 'MissingRequiredAttributesError',
             message: 'Required Attributes are missing.' };
-          req.body = { phone: '919004040595' };
+            req.body = { phone: '919004040595' , password:'password'};
 
           userController.create(req, res, next);
           assert(next.calledOnce);
           assert.equal(next.args[0][0].name, 'MissingRequiredAttributesError');
           assert.equal(next.args[0][0].message,
                        'Required Attributes are missing.');
-        });
+       });
 
     it(
         'should error if phone is missing from the request body',
@@ -143,7 +145,7 @@ describe('User Controller', function() {
           var attributesError = {
             name: 'MissingRequiredAttributesError',
             message: 'Required Attributes are missing.' };
-           req.body = { email: 'test@test.com' };
+           req.body = { email: 'test@test.com' , password:'password'};
 
            userController.create(req, res, next);
            assert(next.calledOnce);
@@ -151,6 +153,22 @@ describe('User Controller', function() {
            assert.equal(next.args[0][0].message,
                         'Required Attributes are missing.');
         });
+           
+           
+       it(
+          'should error if password is missing from the request body',
+          function() {
+          var attributesError = {
+          name: 'MissingRequiredAttributesError',
+          message: 'Required Attributes are missing.' };
+          req.body = { email: 'test@test.com' , phone: '919004040595'};
+          
+          userController.create(req, res, next);
+          assert(next.calledOnce);
+          assert.equal(next.args[0][0].name, 'MissingRequiredAttributesError');
+          assert.equal(next.args[0][0].message,
+                       'Required Attributes are missing.');
+          });
 
     it(
         'should error if the user already exists',
@@ -159,13 +177,13 @@ describe('User Controller', function() {
             name: 'UserExistsError',
             message: 'User already exists.' };
           var localUser = _.clone(testUser);
-          req.body = { email: 'test@gmail.com', phone: '919004040595' };
+          req.body = { email: 'test@gmail.com', phone: '919004040595', password:'password' };
           userStub = sinon.stub(User, 'findOne').yields(null, localUser);
           userController.create(req, res, next);
           assert(next.calledOnce);
           assert.equal(next.args[0][0].name, 'UserExistsError');
           assert.equal(next.args[0][0].message,
-                       'User already exists.');
+                                             'User already exists.');
         });
 
     it(
@@ -188,7 +206,6 @@ describe('User Controller', function() {
           //assert.equal(next.args[0][0].message,
           //                'Error saving the user.');
         });
-
   });
 
 
@@ -461,6 +478,124 @@ describe('User Controller', function() {
              assert.equal(next.args[0][0].message, listError.message);
            });
           
+      });
+         
+  describe('Logging a user in', function() {
+          
+          var mockFindOne = {
+            populate: function() {
+                return this;
+            },
+            exec: function() {
+
+            }
+          };
+          
+          var execStub;
+          
+          afterEach(function(done) {
+              if (execStub) {
+                  execStub.restore();
+              }
+                  done();
+          });
+
+           
+          it(
+             'should on successful login, return the found user document',
+             function() {
+             var localUser = _.clone(testUser);
+             localUser.validPassword = sinon.stub().returns(true);
+             req.body = { email: 'test@test.com', password: 'password' };
+             execStub = sinon.stub(mockFindOne, 'exec').yields(null, localUser);
+             userStub = sinon.stub(User, 'findOne').returns(mockFindOne);
+             userController.login(req, res, next);
+             assert(userStub.calledOnce);
+             assert(localUser.validPassword);
+             assert(next.calledOnce);
+             assert.equal(res.data, localUser);
+             assert.equal(next.args[0].length, 0);
+             });
+          
+          it(
+             'should error if email is missing from the request body',
+             function() {
+             var attributesError = {
+             name: 'MissingRequiredAttributesError',
+             message: 'Required Attributes are missing.' };
+             req.body = { password: 'password' };
+             
+             userController.login(req, res, next);
+             assert(next.calledOnce);
+             assert.equal(next.args[0][0].name, 'MissingRequiredAttributesError');
+             assert.equal(next.args[0][0].message,
+                          'Required Attributes are missing.');
+             });
+          
+          it(
+             'should error if password is missing from the request body',
+             function() {
+             var attributesError = {
+             name: 'MissingRequiredAttributesError',
+             message: 'Required Attributes are missing.' };
+             req.body = { email: 'test@test.com' };
+             
+             userController.login(req, res, next);
+             assert(next.calledOnce);
+             assert.equal(next.args[0][0].name, 'MissingRequiredAttributesError');
+             assert.equal(next.args[0][0].message,
+                          'Required Attributes are missing.');
+             });
+          
+          it(
+             'should error if the user cannot be retrieved',
+             function() {
+             var fetchError = {
+             name: 'UserFetchError',
+             message: 'Error fetching the user.' };
+             req.body = { email: 'test@test.com', password: 'password' };
+             execStub = sinon.stub(mockFindOne, 'exec').yields(fetchError);
+             userStub = sinon.stub(User, 'findOne').returns(mockFindOne);
+             userController.login(req, res, next);
+             assert(next.calledOnce);
+             assert.equal(next.args[0][0].name, 'UserFetchError');
+             assert.equal(next.args[0][0].message, 'Error fetching the user.');
+             });
+          
+          it(
+             'should error if the user cannot be found',
+             function() {
+             var notFoundError = {
+             name: 'UserNotFoundError',
+             message: 'User not found.' };
+             req.body = { email: 'test@test.com', password: 'password' };
+             execStub = sinon.stub(mockFindOne, 'exec').yields();
+             userStub = sinon.stub(User, 'findOne').returns(mockFindOne);
+             userController.login(req, res, next);
+             assert(next.calledOnce);
+             assert.equal(next.args[0][0].name, 'UserNotFoundError');
+             assert.equal(next.args[0][0].message, 'User not found.');
+             });
+          
+          it(
+             'should error if the user\'s password is wrong',
+             function() {
+             var authError = {
+             name: 'AuthError',
+             message: 'Access credentials are incorrect.' };
+             var localUser = _.clone(testUser);
+             
+             localUser.validPassword = sinon.stub().returns(false);
+             req.body = { email: 'test@test.com', password: 'wrongpassword' };
+             
+             execStub = sinon.stub(mockFindOne, 'exec').yields(null, localUser);
+             userStub = sinon.stub(User, 'findOne').returns(mockFindOne);
+             userController.login(req, res, next);
+             assert(next.calledOnce);
+             assert.equal(next.args[0][0].name, 'AuthError');
+             assert.equal(next.args[0][0].message,
+                          'Access credentials are incorrect.');
+             });
       });
 
          

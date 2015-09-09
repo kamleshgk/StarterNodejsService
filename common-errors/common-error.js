@@ -230,24 +230,6 @@ UserExistsError.prototype.constructor = UserExistsError;
 
 
 /**
- * The Invalid Token Error.
- * @param {string=} opt_message The optional message.
- * @constructor
- * @extends {AuthError}
- */
-function InvalidTokenError(opt_message) {
-  this.name = 'InvalidTokenError';
-  this.message = (opt_message || 'Invalid or Expired Token.');
-}
-
-InvalidTokenError.prototype = Object.create(BadRequestError.prototype);
-
-
-/** @type {!InvalidTokenError} */
-InvalidTokenError.prototype.constructor = InvalidTokenError;
-
-
-/**
  * Public API
  * @type {Object}
  */
@@ -279,7 +261,6 @@ module.exports = {
   UserNotFound: UserNotFoundError,
   Admin: AdminError,
   UserExists: UserExistsError,
-  InvalidToken: InvalidTokenError,
   UserList:UserListError
 
 };

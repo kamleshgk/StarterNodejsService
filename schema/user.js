@@ -10,6 +10,7 @@
  * @requires module:mongoose-timestamp
  * @module users/user
  */
+var bcrypt = require('bcrypt-nodejs');
 var mongoose = require('mongoose');
 var mongooseTimestamps = require('mongoose-timestamp');
 var Schema = mongoose.Schema;
@@ -26,6 +27,7 @@ var UserSchema = new Schema({
   lastName: String,
   phone: String,
   address: String,
+  passwordHash: { type: String },                            
   createdat : {type:Number},
   updatedat : {type:Number}
 });
@@ -36,6 +38,30 @@ var UserSchema = new Schema({
  *
  */
 UserSchema.index({ _id: 1 });
+
+
+/**
+ * Generates a password hash.
+ * @param {string} password The password.
+ * @return {string}
+ */
+UserSchema.methods.generateHash = function(password) {
+    var salt = bcrypt.genSaltSync(8);
+    return bcrypt.hashSync(password, salt);
+};
+
+
+/**
+ * Checks the password against the hash.
+ * @param {string} password The password.
+ * @this {!UserSchema}
+ * @return {boolean}
+ */
+UserSchema.methods.validPassword = function(password) {
+    return bcrypt.compareSync(password, this.passwordHash);
+};
+
+
 
 
 UserSchema.plugin(mongooseTimestamps);

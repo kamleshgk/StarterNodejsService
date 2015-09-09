@@ -42,7 +42,7 @@ routes.route('/list').get(validator, userService.list);
 routes.route('/destroy').post(validator, userService.destroy);
 routes.route('/update').post(validator, userService.update);
 routes.route('/user/:id').get(validator, userService.fetch);
-
+routes.route('/login').post(validator, userService.login);
 /**
  * Up display route.
  */

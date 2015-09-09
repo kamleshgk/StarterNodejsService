@@ -20,6 +20,8 @@ We use GULP for automation and code coverage reports
     > sudo npm install -g gulp
     >
     > sudo npm install -g mocha
+    >
+    > sudo npm install bcrypt-nodejs
 
 2. Available Gulp tasks:
 

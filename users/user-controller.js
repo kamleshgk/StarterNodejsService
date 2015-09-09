@@ -38,7 +38,7 @@ function UserController() {}
 UserController.prototype.create = function(req, res, next) {
   var user = new User();
 
-  if (!req.body.email || !req.body.phone) {
+  if (!req.body.email || !req.body.phone || !req.body.password) {
     return next(new commonError.MissingRequiredAttributes());
   }
     
@@ -50,6 +50,7 @@ UserController.prototype.create = function(req, res, next) {
   user.firstName = req.body.firstName;
   user.lastName = req.body.lastName;
   user.address = req.body.address;
+  user.passwordHash = user.generateHash(req.body.password);
   user.createdat = uts;
   user.updatedat = uts;
 
@@ -181,6 +182,69 @@ UserController.prototype.destroy = function(req, res, next) {
            next();
        });
 };
+
+
+/**
+ * Logic for logging the user in.
+ *
+ * @param {Object} req - request object
+ * @param {Object} res - response object
+ * @param {Function} next - next function
+ * @return {function()}
+ */
+UserController.prototype.login = function(req, res, next) {
+    if (!req.body.email || !req.body.password) {
+        return next(new commonError.MissingRequiredAttributes());
+    }
+    
+    User.findOne({ email: req.body.email })
+    .populate('userlogin')
+    .exec(
+          function(userFetchError, foundUser) {
+          
+              if (userFetchError) {
+                return next(new commonError.UserFetch());
+              }
+              
+              if (!foundUser) {
+                return next(new commonError.UserNotFound());
+              }
+              
+              if (foundUser && !foundUser.validPassword(req.body.password)) {
+                return next(
+                          new commonError.Auth('Access credentials are incorrect.'));
+              }
+              
+              res.data = foundUser;
+              next();
+          });
+};
+
+
+/**
+ * Logic for sending forgot password mail.
+ *
+ * @param {Object} req - request object
+ * @param {Object} res - response object
+ * @param {Function} next - next function
+ */
+UserController.prototype.forgotPassword = function(req, res, next) {
+    // TODO(kamlesh): Implement.
+    res.send('OK');
+};
+
+
+/**
+ * Logic for confirming a password reset.
+ *
+ * @param {Object} req - request object
+ * @param {Object} res - response object
+ * @param {Function} next - next function
+ */
+UserController.prototype.passwordReset = function(req, res, next) {
+    // TODO(kamlesh): Implement.
+    res.send('OK');
+}
 
 
 /**
